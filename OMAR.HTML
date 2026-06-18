@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Eng_Omar - Barashada Coding, Video Editing, iyo AI oo af Soomaali ah." />
+<title>Eng_Omar — Barashada Tignoolajiyada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b1220;
+    --bg-2:#0f1b33;
+    --surface:#11203d;
+    --primary:#1e88ff;
+    --primary-2:#3aa3ff;
+    --accent:#7cc4ff;
+    --text:#eaf2ff;
+    --muted:#9fb3d1;
+    --card:#13264a;
+    --border:rgba(255,255,255,.08);
+    --radius:16px;
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Poppins',system-ui,Segoe UI,Roboto,sans-serif;
+    background:radial-gradient(1200px 800px at 10% -10%, #16305f 0%, transparent 60%),
+               radial-gradient(900px 600px at 110% 10%, #0b3a7a 0%, transparent 55%),
+               linear-gradient(180deg,var(--bg) 0%, var(--bg-2) 100%);
+    color:var(--text);
+    min-height:100vh;
+    overflow-x:hidden;
+    line-height:1.6;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:saturate(140%) blur(10px);
+    background:rgba(10,18,36,.7);
+    border-bottom:1px solid var(--border);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px}
+  .logo-badge{
+    width:38px;height:38px;border-radius:10px;
+    background:linear-gradient(135deg,var(--primary),var(--primary-2));
+    display:grid;place-items:center;font-weight:800;color:#fff;
+    box-shadow:0 6px 16px rgba(30,136,255,.45);
+  }
+  nav ul{display:flex;gap:22px;list-style:none}
+  nav a{color:var(--muted);font-weight:500;transition:.2s}
+  nav a:hover{color:var(--text)}
+  .auth{display:flex;gap:10px}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:10px 16px;border-radius:10px;font-weight:600;cursor:pointer;
+    border:1px solid var(--border);background:transparent;color:var(--text);
+    transition:transform .15s ease, background .2s ease, box-shadow .2s ease;
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn-primary{
+    background:linear-gradient(135deg,var(--primary),var(--primary-2));
+    border-color:transparent;color:#fff;
+    box-shadow:0 8px 22px rgba(30,136,255,.35);
+  }
+  .menu-toggle{display:none;background:none;border:0;color:var(--text);font-size:24px}
+
+  /* Hero */
+  .hero{padding:80px 0 60px;position:relative;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:6px 12px;border-radius:999px;
+    background:rgba(30,136,255,.12);color:var(--accent);
+    border:1px solid rgba(30,136,255,.25);font-size:13px;font-weight:600;
+  }
+  h1{font-size:clamp(34px,5vw,56px);line-height:1.1;margin:14px 0 16px;font-weight:800}
+  h1 span{background:linear-gradient(135deg,var(--primary-2),#9ad1ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{color:var(--muted);font-size:18px;max-width:560px}
+  .hero-cta{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+  .hero-art{
+    position:relative;aspect-ratio:1/1;border-radius:24px;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(60,150,255,.35), transparent 60%),
+      linear-gradient(135deg,#10254a,#0a1830);
+    border:1px solid var(--border);box-shadow:var(--shadow);
+    display:grid;place-items:center;overflow:hidden;
+  }
+  .hero-art::before{
+    content:"";position:absolute;inset:-30%;
+    background:conic-gradient(from 0deg,transparent,rgba(30,136,255,.25),transparent 40%);
+    animation:spin 12s linear infinite;
+  }
+  .hero-art .badge{
+    position:relative;z-index:1;font-weight:800;font-size:42px;letter-spacing:1px;
+    padding:30px 38px;border-radius:20px;
+    background:rgba(10,20,40,.7);border:1px solid var(--border);
+    backdrop-filter:blur(6px);
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* Sections */
+  section{padding:70px 0;position:relative}
+  .section-head{text-align:center;margin-bottom:40px}
+  .section-head h2{font-size:clamp(26px,3.4vw,38px);font-weight:800}
+  .section-head p{color:var(--muted);margin-top:8px}
+
+  /* Cards grid */
+  .grid{display:grid;gap:20px}
+  .grid-3{grid-template-columns:repeat(3,1fr)}
+  .grid-4{grid-template-columns:repeat(4,1fr)}
+  .card{
+    background:linear-gradient(180deg,var(--card),#0f2042);
+    border:1px solid var(--border);border-radius:var(--radius);
+    padding:22px;transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    opacity:0;transform:translateY(20px);
+  }
+  .card.visible{opacity:1;transform:none}
+  .card:hover{transform:translateY(-6px);border-color:rgba(30,136,255,.4);box-shadow:0 18px 40px rgba(0,0,0,.4)}
+  .card .icon{
+    width:46px;height:46px;border-radius:12px;display:grid;place-items:center;
+    background:rgba(30,136,255,.15);color:var(--accent);margin-bottom:14px;font-weight:800;
+  }
+  .card h3{font-size:18px;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:14.5px}
+
+  /* Courses */
+  .course{
+    background:linear-gradient(180deg,#13264a,#0e1d3b);
+    border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;
+    transition:transform .25s ease, box-shadow .25s ease;
+    opacity:0;transform:translateY(20px);
+  }
+  .course.visible{opacity:1;transform:none}
+  .course:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.45)}
+  .course .thumb{
+    aspect-ratio:16/9;
+    background:linear-gradient(135deg,#1a4a90,#0e2b5a);
+    display:grid;place-items:center;color:#cfe2ff;font-weight:700;letter-spacing:1px;
+    position:relative;overflow:hidden;
+  }
+  .course .thumb::after{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(400px 200px at 20% 10%, rgba(255,255,255,.12), transparent 60%);
+  }
+  .course .body{padding:18px}
+  .price{color:var(--accent);font-weight:700;margin:6px 0 12px}
+
+  /* Contact */
+  form{display:grid;gap:14px;max-width:640px;margin:0 auto}
+  input,textarea{
+    width:100%;padding:14px 16px;border-radius:12px;
+    background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text);
+    font:inherit;outline:none;transition:border-color .2s ease, background .2s ease;
+  }
+  input:focus,textarea:focus{border-color:var(--primary);background:rgba(255,255,255,.06)}
+  textarea{min-height:140px;resize:vertical}
+  .form-msg{min-height:22px;font-size:14px;text-align:center}
+  .form-msg.ok{color:#7ee2a8}
+  .form-msg.err{color:#ff8b8b}
+
+  /* Footer */
+  footer{
+    margin-top:40px;padding:36px 0 24px;
+    border-top:1px solid var(--border);background:rgba(8,14,28,.6);
+  }
+  .foot{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center}
+  .socials{display:flex;gap:10px}
+  .socials a{
+    width:40px;height:40px;border-radius:10px;display:grid;place-items:center;
+    background:rgba(255,255,255,.06);border:1px solid var(--border);transition:.2s;
+  }
+  .socials a:hover{background:rgba(30,136,255,.2);color:#fff}
+
+  /* Floating social */
+  .floating{
+    position:fixed;right:18px;bottom:18px;z-index:60;
+    display:flex;flex-direction:column;gap:10px;align-items:flex-end;
+  }
+  .floating a{
+    width:48px;height:48px;border-radius:50%;
+    background:linear-gradient(135deg,var(--primary),var(--primary-2));
+    display:grid;place-items:center;color:#fff;font-weight:700;
+    box-shadow:0 10px 24px rgba(30,136,255,.4);
+    transition:transform .2s ease;
+  }
+  .floating a:hover{transform:scale(1.08)}
+
+  /* Animations */
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+  .fade-up{animation:fadeUp .8s ease both}
+
+  /* Responsive */
+  @media (max-width: 960px){
+    .grid-3{grid-template-columns:repeat(2,1fr)}
+    .grid-4{grid-template-columns:repeat(2,1fr)}
+    .hero-grid{grid-template-columns:1fr}
+    .hero-art{max-width:420px;margin:0 auto}
+  }
+  @media (max-width: 640px){
+    nav ul{
+      position:absolute;top:64px;left:0;right:0;
+      flex-direction:column;gap:0;background:rgba(10,18,36,.98);
+      border-bottom:1px solid var(--border);padding:10px 20px;
+      display:none;
+    }
+    nav ul.open{display:flex}
+    nav ul li{padding:12px 0;border-bottom:1px solid var(--border)}
+    .menu-toggle{display:block}
+    .auth .btn{padding:8px 12px;font-size:14px}
+    .grid-3,.grid-4{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#home" class="logo">
+      <div class="logo-badge">EO</div>
+      <span>Eng_Omar</span>
+    </a>
+    <nav>
+      <ul id="menu">
+        <li><a href="#home">HOME</a></li>
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#services">SERVICE</a></li>
+        <li><a href="#courses">COURSE</a></li>
+        <li><a href="#coding">CODING</a></li>
+        <li><a href="#contact">Xiriir</a></li>
+      </ul>
+    </nav>
+    <div class="auth">
+      <button class="btn" onclick="alert('Soo gal — Login')">Soo gal</button>
+      <button class="btn btn-primary" onclick="alert('Iska diiwaan geli — Sign Up')">Iska diiwaan geli</button>
+      <button class="menu-toggle" aria-label="Menu" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div class="fade-up">
+      <span class="eyebrow">★ Barashada Tignoolajiyada af Soomaali</span>
+      <h1>Baro <span>Coding, Video Editing</span> iyo AI si fudud.</h1>
+      <p>Eng_Omar wuxuu ku siiyaa koorsooyin tayo sare leh oo af Soomaali ah si aad u bilowdo safarkaaga tignoolajiyada.</p>
+      <div class="hero-cta">
+        <a href="#courses" class="btn btn-primary">Bilow Hadda →</a>
+        <a href="#about" class="btn">Wax badan baro</a>
+      </div>
+    </div>
+    <div class="hero-art fade-up">
+      <div class="badge">Eng_Omar</div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="section-head">
+      <h2>ABOUT</h2>
+      <p>Waxaan ku caawin karaa inaad bartid  xirfadaha kala duwan ee tignoolajiyada</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="card"><div class="icon">🎯</div><h3>Hadafkayaga</h3><p>In aan gaarsiino aqoonta tignoolajiyada qof kasta oo Soomaali ah.</p></div>
+      <div class="card"><div class="icon">📚</div><h3>Manhajka</h3><p>Casharro habaysan oo af Soomaali ah oo loogu talagalay bilowga ilaa heer sare.</p></div>
+      <div class="card"><div class="icon">🤝</div><h3>Bulshada</h3><p>Ku biir bulshadeena ardayda iyo macalimiinta si aad u hesho taageero.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="section-head">
+      <h2>Adeegyadayada</h2>
+      <p>Wax kasta oo aad u baahan tahay si aad ugu bilowdo carriga tignoolajiyada.</p>
+    </div>
+    <div class="grid grid-4">
+      <div class="card"><div class="icon">💻</div><h3>Coding</h3><p>HTML, CSS, JavaScript, Python iyo wax badan.</p></div>
+      <div class="card"><div class="icon">🎬</div><h3>Video Editing</h3><p>CapCut iyo qalab kale oo casri ah.</p></div>
+      <div class="card"><div class="icon">🤖</div><h3>AI</h3><p>Baro sida loo isticmaalo AI nolosha maalinlaha ah.</p></div>
+      <div class="card"><div class="icon">🎨</div><h3>Design</h3><p>Naqshadeynta saxda ah ee mashruucyada.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="courses">
+  <div class="container">
+    <div class="section-head">
+      <h2>Koorsooyinka</h2>
+      <p>Dooro koorsada kugu habboon oo bilow hadda.</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="course">
+        <div class="thumb">VIDEO EDITING</div>
+        <div class="body">
+          <h3>Basic Video Editing</h3>
+          <p>Baro sida loo sameeyo video xirfadle ah adigoo isticmaalaya CapCut.</p>
+          <div class="price">$20</div>
+          <a class="btn btn-primary" href="#contact">Iska diiwaan geli</a>
+        </div>
+      </div>
+      <div class="course">
+        <div class="thumb">CODING</div>
+        <div class="body">
+          <h3>Web Development</h3>
+          <p>HTML, CSS, JavaScript ilaa aad samayso website xirfadle ah.</p>
+          <div class="price">$30</div>
+          <a class="btn btn-primary" href="#contact">Iska diiwaan geli</a>
+        </div>
+      </div>
+      <div class="course">
+        <div class="thumb">AI</h2></div>
+        <div class="body">
+          <h3>AI Basics</h3>
+          <p>Baro asaaska AI iyo sida loo isticmaalo qalabka casriga ah.</p>
+          <div class="price">$25</div>
+          <a class="btn btn-primary" href="#contact">Iska diiwaan geli</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="coding">
+  <div class="container">
+    <div class="section-head">
+      <h2>Casharrada Coding</h2>
+      <p>10 cashar oo aasaasi ah oo af Soomaali ah.</p>
+    </div>
+    <div class="grid grid-3" id="lessons"></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="section-head">
+      <h2>Nala Soo Xiriir</h2>
+      <p>Su'aal ma qabtaa? Noo soo qor farriin.</p>
+    </div>
+    <form id="contactForm" onsubmit="return submitContact(event)">
+      <input type="text" name="full_name" placeholder="Magaca oo dhan" required />
+      <input type="email" name="email" placeholder="Iimaylkaaga" required />
+      <textarea name="message" placeholder="Farriintaada..." required></textarea>
+      <button class="btn btn-primary" type="submit">Dir Farriinta</button>
+      <div class="form-msg" id="formMsg"></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="container foot">
+    <div class="logo">
+      <div class="logo-badge">EO</div>
+      <span>Eng_Omar © <span id="year"></span></span>
+    </div>
+    <div class="socials">
+      <a href="https://wa.me/252656861821" target="_blank" aria-label="WhatsApp">W</a>
+      <a href="https://instagram.com/weheliyow1" target="_blank" aria-label="Instagram">IG</a>
+      <a href="https://tiktok.com/@eng_omar6" target="_blank" aria-label="TikTok">TT</a>
+    </div>
+  </div>
+</footer>
+
+<div class="floating">
+  <a href="https://wa.me/252656861821" target="_blank" title="WhatsApp">W</a>
+  <a href="https://instagram.com/weheliyow1" target="_blank" title="Instagram">IG</a>
+  <a href="https://tiktok.com/@eng_omar6" target="_blank" title="TikTok">TT</a>
+</div>
+
+<script>
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Lessons data (Somali)
+  const lessons = [
+    {t:"Waa maxay Coding?", d:"Coding waa luqada aan kula hadalno kombuyutarka si uu u qabto hawlaha."},
+    {t:"Waa maxay HTML?", d:"HTML waa qaab-dhismeedka bogagga internetka."},
+    {t:"Waa maxay CSS?", d:"CSS waxay qurxisaa bogagga HTML — midabada, naqshadda iyo qaabka."},
+    {t:"Waa maxay JavaScript?", d:"JavaScript waxay siisaa bogagga firfircooni iyo falcelin."},
+    {t:"Waa maxay Python?", d:"Python waa luqad fudud oo loo isticmaalo AI, data, iyo web."},
+    {t:"Sidee loo noqdaa Programmer?", d:"Bilow aasaaska, ku celi mashruucyo, kuna joog si joogto ah."},
+    {t:"Waa maxay Frontend Development?", d:"Qaybta uu isticmaale arko ee website-ka."},
+    {t:"Waa maxay Backend Development?", d:"Qaybta gadaal ee maamusha database iyo server."},
+    {t:"Waa maxay Artificial Intelligence?", d:"AI waa tignoolajiyad u oggolaata mashiino inay garto oo baranto."},
+    {t:"Muhimadda Coding", d:"Coding waxa uu furayaa fursado shaqo oo aan dhammaad lahayn."},
+  ];
+  const lessonsEl = document.getElementById('lessons');
+  lessons.forEach((l,i)=>{
+    const div = document.createElement('div');
+    div.className = 'card';
+    div.innerHTML = `<div class="icon">${i+1}</div><h3>${l.t}</h3><p>${l.d}</p>`;
+    lessonsEl.appendChild(div);
+  });
+
+  // Intersection observer fade-in
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target);} });
+  },{threshold:.12});
+  document.querySelectorAll('.card,.course').forEach(el=>io.observe(el));
+
+  // Smooth nav close on mobile
+  document.querySelectorAll('#menu a').forEach(a=>{
+    a.addEventListener('click',()=>document.getElementById('menu').classList.remove('open'));
+  });
+
+  // Contact form (client-only demo)
+  function submitContact(e){
+    e.preventDefault();
+    const msg = document.getElementById('formMsg');
+    const form = e.target;
+    if(!form.full_name.value || !form.email.value || !form.message.value){
+      msg.textContent = "Fadlan buuxi dhammaan goobaha.";
+      msg.className = "form-msg err";
+      return false;
+    }
+    msg.textContent = "Mahadsanid! Farriintaada waa la helay.";
+    msg.className = "form-msg ok";
+    form.reset();
+    return false;
+  }
+</script>
+</body>
+</html>
